@@ -8,16 +8,33 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { MoreHorizontal } from 'lucide-react';
+import { Loader2, MoreHorizontal } from 'lucide-react';
 import { TableCell, TableRow } from '@/components/ui/table';
 import type { Student } from '@/types/db';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from '@/components/ui/dialog';
+import { Textarea } from '@/components/ui/textarea';
+import { banUser } from './actions';
+
+const initialState = {
+  id: '',
+  reason: ''
+};
 
 export function StudentRow({ student }: { student: Student }) {
   const { username, student: studentInfo } = student;
+
   const { studentCode, profile, major, className, yearOfAdmission } =
     studentInfo;
   const { gender, avatarUrl, contact } = profile;
   const { email, phoneNumber } = contact;
+
   return (
     <TableRow>
       <TableCell className="hidden sm:table-cell">
@@ -31,8 +48,13 @@ export function StudentRow({ student }: { student: Student }) {
       </TableCell>
 
       <TableCell>
-        <Badge variant="outline" className="capitalize">
-          {'Avaiable'}
+        <Badge
+          variant={
+            student.accountStatus === 'BANNED' ? 'destructive' : 'outline'
+          }
+          className="capitalize"
+        >
+          {student.accountStatus}
         </Badge>
       </TableCell>
       <TableCell className="hidden md:table-cell">{username}</TableCell>
@@ -52,7 +74,32 @@ export function StudentRow({ student }: { student: Student }) {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <Dialog>
+              <DialogTrigger className="text-sm hover:bg-slate-200 w-full text-left rounded-md py-2 pl-3">
+                Ban
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader className="space-y-5">
+                  <DialogTitle>Reason ban this user?</DialogTitle>
+                  <form className="space-y-5" action={banUser}>
+                    <input
+                      type="hidden"
+                      name="id"
+                      value={student.id}
+                      required
+                    />
+                    <Textarea name="reason" />
+                    <Button type="submit">
+                      {false && <Loader2 className="animate-spin" />}
+                      Ban
+                    </Button>
+                  </form>
+                  <DialogDescription></DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
+
+            {/* <DropdownMenuItem></DropdownMenuItem> */}
             <DropdownMenuItem>
               {/* <form action={deleteProduct}> */}
               <button type="submit">Delete</button>

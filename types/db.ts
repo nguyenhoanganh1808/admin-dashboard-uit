@@ -6,6 +6,7 @@ export interface Student {
   student: StudentInfo;
   lecturer: null;
   admin: null;
+  accountStatus: 'ACTIVE' | 'BANNED';
 }
 
 export interface Lecturer {
