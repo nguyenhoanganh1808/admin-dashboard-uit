@@ -2,6 +2,7 @@
 
 import axios from 'axios';
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL
@@ -21,6 +22,9 @@ api.interceptors.response.use(
   async (error) => {
     console.log(error);
     if (error.response?.status === 401) {
+      (await cookies()).delete('refreshToken');
+      (await cookies()).delete('accessToken');
+      redirect('/login');
     }
     return Promise.reject(error);
   }
