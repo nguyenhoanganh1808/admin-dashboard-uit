@@ -13,36 +13,33 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
-import { Student } from '@/types/db';
+import { Lecturer, Student } from '@/types/db';
 
 import api from '@/services/api';
-export async function LecturersTable({
-  totalPages,
-  currentPage
-}: {
-  totalPages: number;
-  currentPage: number;
-}) {
-  let studentsPerPage = 5;
-
+import { PaginationTable } from '@/components/ui/pagination-table';
+import { LecturerRow } from './lecturer-row';
+export async function LecturersTable({ currentPage }: { currentPage: number }) {
   const response = await api.get('/users/all-users', {
     params: {
-      role: 'STUDENT',
-      page: currentPage - 1,
-      size: studentsPerPage,
+      role: 'LECTURER',
+      page: 0,
+      size: 5,
       sortBy: 'username',
       sortDir: 'asc',
       forceFirstAndLastRels: true
     }
   });
-  const students: Student[] = response.data._embedded.userResponseList;
+  const totalPages = response.data.page.totalPages;
+  let lecturersPerPage = 5;
+
+  const lecturers: Lecturer[] = response.data._embedded.userResponseList;
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Students</CardTitle>
+        <CardTitle>Lecturers</CardTitle>
         <CardDescription>
-          Manage your students and view their sales performance.
+          Manage your lecturers and view their sales performance.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -57,12 +54,14 @@ export async function LecturersTable({
               <TableHead>Gender</TableHead>
               <TableHead className="hidden md:table-cell">Email</TableHead>
               <TableHead className="hidden md:table-cell">
-                Student Code
+                Lecturer Code
               </TableHead>
-              <TableHead className="hidden md:table-cell">Major</TableHead>
-              <TableHead className="hidden md:table-cell">Class</TableHead>
+              <TableHead className="hidden md:table-cell">Department</TableHead>
               <TableHead className="hidden md:table-cell">
-                Year of Admission
+                Office Location
+              </TableHead>
+              <TableHead className="hidden md:table-cell">
+                Years of Experience
               </TableHead>
               <TableHead>
                 <span className="sr-only">Actions</span>
@@ -70,8 +69,8 @@ export async function LecturersTable({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {students.map((student) => (
-              <StudentRow key={student.id} student={student} />
+            {lecturers.map((lecturer) => (
+              <LecturerRow key={lecturer.id} lecturer={lecturer} />
             ))}
           </TableBody>
         </Table>

@@ -17,16 +17,17 @@ export interface Lecturer {
   student: null;
   lecturer: LecturerInfo;
   admin: null;
+  accountStatus: 'ACTIVE' | 'BANNED';
 }
 
 interface LecturerInfo {
   id: number;
   userId: string;
   profile: Profile;
-  studentCode: string;
-  major: string;
-  className: string;
-  yearOfAdmission: number;
+  lecturerCode: string;
+  department: string;
+  officeLocation: string;
+  yearsOfExperience: number;
 }
 
 interface StudentInfo {
@@ -69,10 +70,6 @@ interface Contact {
   email: string;
   phoneNumber: string;
   address: string;
-}
-
-interface Lecturer {
-  // Define lecturer-specific properties here
 }
 
 interface Admin {}

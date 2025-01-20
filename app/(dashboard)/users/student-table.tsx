@@ -31,8 +31,13 @@ export async function StudentsTable({ currentPage }: { currentPage: number }) {
       forceFirstAndLastRels: true
     }
   });
+  console.log(response.data);
   const students: Student[] = response.data._embedded.userResponseList;
   const totalPages = response.data.page.totalPages;
+  const totalElements = response.data.page.totalElements;
+  // const currentElements = response.data.page.numberOfElements;
+  const startIndex = (currentPage - 1) * studentsPerPage + 1;
+  // const endIndex = startIndex + currentElements - 1;
 
   return (
     <Card>
@@ -75,17 +80,10 @@ export async function StudentsTable({ currentPage }: { currentPage: number }) {
       </CardContent>
       <CardFooter>
         <form className="flex items-center w-full justify-between">
-          {/* <div className="text-xs text-muted-foreground">
-            Showing{' '}
-            <strong>
-              {Math.max(
-                0,
-                Math.min(offset - studentsPerPage, totalStudents) + 1
-              )}
-              -{offset}
-            </strong>{' '}
-            of <strong>{totalStudents}</strong> students
-          </div> */}
+          <div className="text-xs text-muted-foreground">
+            Showing <strong>{/* {startIndex}-{endIndex} */}</strong> of{' '}
+            <strong>{totalElements}</strong> students
+          </div>
           <div className="flex">
             <PaginationTable totalPages={totalPages} />
           </div>
