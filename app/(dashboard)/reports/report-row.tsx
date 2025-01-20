@@ -22,7 +22,7 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { banUser } from '../users/actions';
 import { Checkbox } from '@/components/ui/checkbox';
-import { resolveReport } from './actions';
+import { resolveReport, warnReport } from './actions';
 
 const initialState = {
   id: '',
@@ -97,9 +97,12 @@ export function ReportRow({ report }: { report: Report }) {
 
             {/* <DropdownMenuItem></DropdownMenuItem> */}
             <DropdownMenuItem>
-              {/* <form action={deleteProduct}> */}
-              <button type="submit">Delete</button>
-              {/* </form> */}
+              <form action={warnReport}>
+                <input type="hidden" name="id" value={report.id} />
+                <button className="px-2" type="submit">
+                  Warn
+                </button>
+              </form>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

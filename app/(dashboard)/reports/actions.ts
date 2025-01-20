@@ -16,3 +16,9 @@ export async function resolveReport(formData: FormData) {
 
   revalidatePath('/reports');
 }
+
+export async function warnReport(formData: FormData) {
+  let id = Number(formData.get('id'));
+  await api.post(`/reports/warn/${id}`);
+  revalidatePath('/reports');
+}
