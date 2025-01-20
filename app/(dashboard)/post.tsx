@@ -12,29 +12,23 @@ import { MoreHorizontal } from 'lucide-react';
 import { TableCell, TableRow } from '@/components/ui/table';
 // import { SelectProduct } from '@/lib/db';
 // import { deleteProduct } from './actions';
+import { Post as PostType } from '@/types/db';
+import { approvePost, rejectPost } from './actions';
 
-export function Product({ product }: { product: any }) {
+export function Post({ post }: { post: PostType }) {
   return (
     <TableRow>
-      <TableCell className="hidden sm:table-cell">
-        <Image
-          alt="Product image"
-          className="aspect-square rounded-md object-cover"
-          height="64"
-          src={product.imageUrl}
-          width="64"
-        />
-      </TableCell>
-      <TableCell className="font-medium">{product.name}</TableCell>
+      <TableCell className="font-medium max-w-80">{post.textContent}</TableCell>
       <TableCell>
         <Badge variant="outline" className="capitalize">
-          {product.status}
+          {post.status}
         </Badge>
       </TableCell>
-      <TableCell className="hidden md:table-cell">{`$${product.price}`}</TableCell>
-      <TableCell className="hidden md:table-cell">{product.stock}</TableCell>
       <TableCell className="hidden md:table-cell">
-        {product.availableAt.toLocaleDateString('en-US')}
+        {post.user.username}
+      </TableCell>
+      <TableCell className="hidden md:table-cell">
+        {new Date(post.createdAt).toLocaleDateString('en-US')}
       </TableCell>
       <TableCell>
         <DropdownMenu>
@@ -46,7 +40,18 @@ export function Product({ product }: { product: any }) {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem>
+              <form action={approvePost}>
+                <input type="hidden" name="id" value={post.id} />
+                <button type="submit">Approve</button>
+              </form>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <form action={rejectPost}>
+                <input type="hidden" name="id" value={post.id} />
+                <button type="submit">Reject</button>
+              </form>
+            </DropdownMenuItem>
             <DropdownMenuItem>
               {/* <form action={deleteProduct}> */}
               <button type="submit">Delete</button>

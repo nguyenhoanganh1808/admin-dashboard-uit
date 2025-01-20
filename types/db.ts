@@ -73,3 +73,13 @@ interface Contact {
 }
 
 interface Admin {}
+
+export interface Post {
+  id: number;
+  title: string;
+  textContent: string;
+  privacy: 'PUBLIC' | 'PRIVATE';
+  createdAt: string;
+  user: Student | Lecturer;
+  status: 'PENDING' | 'APPROVED' | 'REJECTED';
+}
