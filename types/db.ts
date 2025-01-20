@@ -83,3 +83,12 @@ export interface Post {
   user: Student | Lecturer;
   status: 'PENDING' | 'APPROVED' | 'REJECTED';
 }
+
+export interface Report {
+  id: number;
+  post: Post;
+  reportedBy: Student | Lecturer;
+  reason: string;
+  adminNotes: string | null;
+  status: 'PENDING' | 'RESOLVED';
+}

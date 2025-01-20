@@ -78,7 +78,7 @@ function DesktopNav() {
           <ShoppingCart className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="/" label="Products">
+        <NavItem href="/" label="Posts">
           <Package className="h-5 w-5" />
         </NavItem>
 
@@ -86,7 +86,7 @@ function DesktopNav() {
           <Users2 className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="#" label="Analytics">
+        <NavItem href="/reports" label="Reports">
           <LineChart className="h-5 w-5" />
         </NavItem>
       </nav>
@@ -145,7 +145,7 @@ function MobileNav() {
             className="flex items-center gap-4 px-2.5 text-foreground"
           >
             <Package className="h-5 w-5" />
-            Products
+            Posts
           </Link>
           <Link
             href="#"
