@@ -20,7 +20,8 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
-import { banUser } from './actions';
+import { banUser, unbanUser } from './actions';
+import FormChangeUserStatus from './form-change-user-status';
 
 const initialState = {
   id: '',
@@ -29,6 +30,7 @@ const initialState = {
 
 export function StudentRow({ student }: { student: Student }) {
   const { username, student: studentInfo } = student;
+  const { accountStatus } = student;
 
   const { studentCode, profile, major, className, yearOfAdmission } =
     studentInfo;
@@ -49,12 +51,10 @@ export function StudentRow({ student }: { student: Student }) {
 
       <TableCell>
         <Badge
-          variant={
-            student.accountStatus === 'BANNED' ? 'destructive' : 'outline'
-          }
+          variant={accountStatus === 'BANNED' ? 'destructive' : 'outline'}
           className="capitalize"
         >
-          {student.accountStatus}
+          {accountStatus}
         </Badge>
       </TableCell>
       <TableCell className="hidden md:table-cell">{username}</TableCell>
@@ -74,30 +74,7 @@ export function StudentRow({ student }: { student: Student }) {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <Dialog>
-              <DialogTrigger className="text-sm hover:bg-slate-200 w-full text-left rounded-md py-2 pl-3">
-                Ban
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader className="space-y-5">
-                  <DialogTitle>Reason ban this user?</DialogTitle>
-                  <form className="space-y-5" action={banUser}>
-                    <input
-                      type="hidden"
-                      name="id"
-                      value={student.id}
-                      required
-                    />
-                    <Textarea name="reason" />
-                    <Button type="submit">
-                      {false && <Loader2 className="animate-spin" />}
-                      Ban
-                    </Button>
-                  </form>
-                  <DialogDescription></DialogDescription>
-                </DialogHeader>
-              </DialogContent>
-            </Dialog>
+            <FormChangeUserStatus user={student} />
 
             {/* <DropdownMenuItem></DropdownMenuItem> */}
             <DropdownMenuItem>

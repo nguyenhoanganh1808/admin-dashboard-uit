@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
 import { banUser } from './actions';
+import FormChangeUserStatus from './form-change-user-status';
 
 const initialState = {
   id: '',
@@ -81,30 +82,7 @@ export function LecturerRow({ lecturer }: { lecturer: Lecturer }) {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <Dialog>
-              <DialogTrigger className="text-sm hover:bg-slate-200 w-full text-left rounded-md py-2 pl-3">
-                Ban
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader className="space-y-5">
-                  <DialogTitle>Reason ban this user?</DialogTitle>
-                  <form className="space-y-5" action={banUser}>
-                    <input
-                      type="hidden"
-                      name="id"
-                      value={lecturer.id}
-                      required
-                    />
-                    <Textarea name="reason" />
-                    <Button type="submit">
-                      {false && <Loader2 className="animate-spin" />}
-                      Ban
-                    </Button>
-                  </form>
-                  <DialogDescription></DialogDescription>
-                </DialogHeader>
-              </DialogContent>
-            </Dialog>
+            <FormChangeUserStatus user={lecturer} />
 
             {/* <DropdownMenuItem></DropdownMenuItem> */}
             <DropdownMenuItem>
