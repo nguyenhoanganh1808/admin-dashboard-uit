@@ -21,7 +21,7 @@ export default async function UsersPage(props: {
           <TabsTrigger value="LECTURER">Lecturer</TabsTrigger>
           <TabsTrigger value="ORGANIZER">Organizer</TabsTrigger>
         </TabsList>
-        <div className="ml-auto flex items-center gap-2">
+        {/* <div className="ml-auto flex items-center gap-2">
           <Button size="sm" variant="outline" className="h-8 gap-1">
             <File className="h-3.5 w-3.5" />
             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
@@ -34,7 +34,7 @@ export default async function UsersPage(props: {
               Add Product
             </span>
           </Button>
-        </div>
+        </div> */}
       </div>
 
       <TabsContent value="STUDENT">

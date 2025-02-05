@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import {
+  Folder,
+  Folders,
   Home,
   LineChart,
   Package,
@@ -70,14 +72,6 @@ function DesktopNav() {
           <span className="sr-only">Acme Inc</span>
         </Link>
 
-        <NavItem href="#" label="Dashboard">
-          <Home className="h-5 w-5" />
-        </NavItem>
-
-        <NavItem href="#" label="Orders">
-          <ShoppingCart className="h-5 w-5" />
-        </NavItem>
-
         <NavItem href="/" label="Posts">
           <Package className="h-5 w-5" />
         </NavItem>
@@ -88,6 +82,10 @@ function DesktopNav() {
 
         <NavItem href="/reports" label="Reports">
           <LineChart className="h-5 w-5" />
+        </NavItem>
+
+        <NavItem href="/topics" label="Topics">
+          <Folders className="h-5 w-5" />
         </NavItem>
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
@@ -133,33 +131,27 @@ function MobileNav() {
             <Home className="h-5 w-5" />
             Dashboard
           </Link>
+
           <Link
-            href="#"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            Orders
-          </Link>
-          <Link
-            href="#"
+            href="/posts"
             className="flex items-center gap-4 px-2.5 text-foreground"
           >
             <Package className="h-5 w-5" />
             Posts
           </Link>
           <Link
-            href="#"
+            href="/users"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <Users2 className="h-5 w-5" />
             Users
           </Link>
           <Link
-            href="#"
+            href="/topics"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
-            <LineChart className="h-5 w-5" />
-            Settings
+            <Folder className="h-5 w-5" />
+            Users
           </Link>
         </nav>
       </SheetContent>

@@ -92,3 +92,9 @@ export interface Report {
   adminNotes: string | null;
   status: 'PENDING' | 'RESOLVED';
 }
+
+export interface Topic {
+  id: number;
+  name: string;
+  description: string;
+}

@@ -1,12 +1,6 @@
-import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { File, PlusCircle } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs';
 
-import api from '@/services/api';
-import { StudentsTable } from '../users/student-table';
-import { ReportTable } from './report-table';
-
-export default async function ReportsPage(props: {
+export default async function TopicsPage(props: {
   searchParams?: Promise<{
     query?: string;
     page?: string;
@@ -15,11 +9,10 @@ export default async function ReportsPage(props: {
   const searchParams = await props.searchParams;
   const currentPage = Number(searchParams?.page) || 1;
   return (
-    <Tabs defaultValue="pending">
+    <Tabs defaultValue="all">
       <div className="flex items-center">
         <TabsList className="flex">
-          <TabsTrigger value="pending">Pending</TabsTrigger>
-          <TabsTrigger value="resolved">Resolved</TabsTrigger>
+          <TabsTrigger value="pending">All</TabsTrigger>
         </TabsList>
         {/* <div className="ml-auto flex items-center gap-2">
           <Button size="sm" variant="outline" className="h-8 gap-1">
@@ -37,12 +30,7 @@ export default async function ReportsPage(props: {
         </div> */}
       </div>
 
-      <TabsContent value="pending">
-        <ReportTable currentPage={currentPage} type="PENDING" />
-      </TabsContent>
-      <TabsContent value="resolved">
-        <ReportTable currentPage={currentPage} type="RESOLVED" />
-      </TabsContent>
+      <TabsContent value="all">hehe</TabsContent>
     </Tabs>
   );
 }

@@ -27,7 +27,7 @@ export default async function PostsPage(props: {
         <TabsList>
           <TabsTrigger value="all">All</TabsTrigger>
         </TabsList>
-        <div className="ml-auto flex items-center gap-2">
+        {/* <div className="ml-auto flex items-center gap-2">
           <Button size="sm" variant="outline" className="h-8 gap-1">
             <File className="h-3.5 w-3.5" />
             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
@@ -40,7 +40,7 @@ export default async function PostsPage(props: {
               Add Product
             </span>
           </Button>
-        </div>
+        </div> */}
       </div>
       <TabsContent value="all">
         <PostsTable posts={posts} page={page} totalPosts={10} />

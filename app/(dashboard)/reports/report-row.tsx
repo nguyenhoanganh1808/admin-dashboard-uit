@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Loader2, MoreHorizontal } from 'lucide-react';
 import { TableCell, TableRow } from '@/components/ui/table';
-import type { Lecturer, Report, Student } from '@/types/db';
+import type { Report } from '@/types/db';
 import {
   Dialog,
   DialogContent,
@@ -20,14 +20,9 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
-import { banUser } from '../users/actions';
+
 import { Checkbox } from '@/components/ui/checkbox';
 import { resolveReport, warnReport } from './actions';
-
-const initialState = {
-  id: '',
-  reason: ''
-};
 
 export function ReportRow({ report }: { report: Report }) {
   console.log(report);

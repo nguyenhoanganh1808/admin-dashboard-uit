@@ -81,6 +81,7 @@ export function LecturerRow({ lecturer }: { lecturer: Lecturer }) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
+            <DialogTitle></DialogTitle>
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <FormChangeUserStatus user={lecturer} />
 
