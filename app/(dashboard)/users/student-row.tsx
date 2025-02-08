@@ -57,7 +57,7 @@ export function StudentRow({ student }: { student: Student }) {
           {accountStatus}
         </Badge>
       </TableCell>
-      <TableCell className="hidden md:table-cell">{username}</TableCell>
+      <TableCell>{username}</TableCell>
       <TableCell className="hidden md:table-cell">{gender}</TableCell>
       <TableCell className="hidden md:table-cell">{email}</TableCell>
       <TableCell className="hidden md:table-cell">{studentCode}</TableCell>
@@ -77,11 +77,11 @@ export function StudentRow({ student }: { student: Student }) {
             <FormChangeUserStatus user={student} />
 
             {/* <DropdownMenuItem></DropdownMenuItem> */}
-            <DropdownMenuItem>
-              {/* <form action={deleteProduct}> */}
+            {/* <DropdownMenuItem>
+              <form action={deleteProduct}>
               <button type="submit">Delete</button>
-              {/* </form> */}
-            </DropdownMenuItem>
+              </form>
+            </DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
       </TableCell>

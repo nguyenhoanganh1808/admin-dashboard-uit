@@ -51,7 +51,7 @@ export async function LecturersTable({ currentPage }: { currentPage: number }) {
               </TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Username</TableHead>
-              <TableHead>Gender</TableHead>
+              <TableHead className="hidden md:table-cell">Gender</TableHead>
               <TableHead className="hidden md:table-cell">Email</TableHead>
               <TableHead className="hidden md:table-cell">
                 Lecturer Code

@@ -63,7 +63,7 @@ export function LecturerRow({ lecturer }: { lecturer: Lecturer }) {
           {lecturer.accountStatus}
         </Badge>
       </TableCell>
-      <TableCell className="hidden md:table-cell">{username}</TableCell>
+      <TableCell>{username}</TableCell>
       <TableCell className="hidden md:table-cell">{gender}</TableCell>
       <TableCell className="hidden md:table-cell">{email}</TableCell>
       <TableCell className="hidden md:table-cell">{lecturerCode}</TableCell>
@@ -81,16 +81,16 @@ export function LecturerRow({ lecturer }: { lecturer: Lecturer }) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DialogTitle></DialogTitle>
+            {/* <DialogTitle></DialogTitle> */}
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <FormChangeUserStatus user={lecturer} />
 
             {/* <DropdownMenuItem></DropdownMenuItem> */}
-            <DropdownMenuItem>
-              {/* <form action={deleteProduct}> */}
+            {/* <DropdownMenuItem>
+              <form action={deleteProduct}>
               <button type="submit">Delete</button>
-              {/* </form> */}
-            </DropdownMenuItem>
+              </form>
+            </DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
       </TableCell>
