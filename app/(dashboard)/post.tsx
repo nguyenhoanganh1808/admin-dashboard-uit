@@ -52,11 +52,11 @@ export function Post({ post }: { post: PostType }) {
                 <button type="submit">Reject</button>
               </form>
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              {/* <form action={deleteProduct}> */}
+            {/* <DropdownMenuItem>
+              <form action={deleteProduct}>
               <button type="submit">Delete</button>
-              {/* </form> */}
-            </DropdownMenuItem>
+              </form>
+            </DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
       </TableCell>
