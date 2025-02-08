@@ -57,7 +57,7 @@ export async function ReportTable({
             <TableRow>
               <TableHead>Post content</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead>Report by </TableHead>
+              <TableHead className="hidden md:table-cell">Report by </TableHead>
               <TableHead className="hidden md:table-cell">Reason</TableHead>
               <TableHead className="hidden md:table-cell">
                 Admin Notes
