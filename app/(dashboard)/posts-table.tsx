@@ -72,8 +72,10 @@ export function PostsTable({
         </Table>
       </CardContent>
       <CardFooter>
-        <form className="flex items-end w-full justify-between">
-          <PaginationTable totalPages={1} />
+        <form className="flex items-center w-full justify-between">
+          <div className="flex justify-end w-full">
+            <PaginationTable totalPages={totalPosts / postsPerPage} />
+          </div>
         </form>
       </CardFooter>
     </Card>

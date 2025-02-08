@@ -8,14 +8,13 @@ export default async function PostsPage(props: {
   searchParams: Promise<{ q: string; page: string }>;
 }) {
   const searchParams = await props.searchParams;
-  const search = searchParams.q ?? '';
-  const page = Number(searchParams.page) ?? 1;
+  const page = Number(searchParams.page) || 1;
 
   const postsPerPage = 5;
 
   const response = await api.get('/admin/getPendingPosts', {
     params: {
-      page: 0,
+      page: page - 1,
       size: postsPerPage
     }
   });
