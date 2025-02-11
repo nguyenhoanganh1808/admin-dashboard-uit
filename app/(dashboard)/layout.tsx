@@ -3,6 +3,7 @@ import {
   Folder,
   Folders,
   Home,
+  HomeIcon,
   LineChart,
   Package,
   Package2,
@@ -71,6 +72,9 @@ function DesktopNav() {
           <VercelLogo className="h-3 w-3 transition-all group-hover:scale-110" />
           <span className="sr-only">Acme Inc</span>
         </Link>
+        <NavItem href="/dashboard" label="Dashboard">
+          <HomeIcon className="h-5 w-5" />
+        </NavItem>
 
         <NavItem href="/" label="Posts">
           <Package className="h-5 w-5" />
@@ -83,10 +87,6 @@ function DesktopNav() {
         <NavItem href="/reports" label="Reports">
           <LineChart className="h-5 w-5" />
         </NavItem>
-
-        {/* <NavItem href="/topics" label="Topics">
-          <Folders className="h-5 w-5" />
-        </NavItem> */}
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
         <Tooltip>

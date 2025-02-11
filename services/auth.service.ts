@@ -1,6 +1,6 @@
 'use server';
 
-import api from './api';
+import api from './api-server';
 import { formSigninSchema } from '@/hooks/useFormSignin';
 import { z } from 'zod';
 import { LoginResponse } from '@/types/form';
@@ -18,7 +18,7 @@ export async function login(
 
     const cookieStore = await cookies();
     cookieStore.set('accessToken', data.accessToken, {
-      httpOnly: true,
+      // httpOnly: true,
       secure: true,
       path: '/'
     });
@@ -33,6 +33,7 @@ export async function login(
 }
 
 export async function logout() {
-  Cookies.remove('accessToken');
-  Cookies.remove('refreshToken');
+  const cookieStore = await cookies();
+  cookieStore.delete('accessToken');
+  cookieStore.delete('refreshToken');
 }

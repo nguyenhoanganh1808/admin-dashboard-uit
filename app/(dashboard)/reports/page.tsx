@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { File, PlusCircle } from 'lucide-react';
 
-import api from '@/services/api';
+import api from '@/services/api-server';
 import { StudentsTable } from '../users/student-table';
 import { ReportTable } from './report-table';
 

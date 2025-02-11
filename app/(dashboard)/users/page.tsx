@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { File, PlusCircle } from 'lucide-react';
 import { StudentsTable } from './student-table';
-import api from '@/services/api';
+import api from '@/services/api-server';
 import { LecturersTable } from './lecturer-table';
 
 export default async function UsersPage(props: {

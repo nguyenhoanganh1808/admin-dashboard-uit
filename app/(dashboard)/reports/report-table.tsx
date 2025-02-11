@@ -14,7 +14,7 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
-import api from '@/services/api';
+import api from '@/services/api-server';
 import { Report, Student } from '@/types/db';
 import { ReportRow } from './report-row';
 import { PaginationTable } from '@/components/ui/pagination-table';

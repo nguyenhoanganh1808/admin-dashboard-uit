@@ -17,7 +17,7 @@ import { Student } from '@/types/db';
 import { StudentRow } from './student-row';
 import { PaginationTable } from '@/components/ui/pagination-table';
 
-import api from '@/services/api';
+import api from '@/services/api-server';
 export async function StudentsTable({ currentPage }: { currentPage: number }) {
   let studentsPerPage = 5;
 

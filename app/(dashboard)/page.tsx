@@ -2,7 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { File, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PostsTable } from './posts-table';
-import api from '@/services/api';
+import api from '@/services/api-server';
 
 export default async function PostsPage(props: {
   searchParams: Promise<{ q: string; page: string }>;

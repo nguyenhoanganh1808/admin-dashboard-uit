@@ -1,6 +1,6 @@
 'use server';
 
-import api from '@/services/api';
+import api from '@/services/api-server';
 // import { deleteProductById } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
 

@@ -98,3 +98,15 @@ export interface Topic {
   name: string;
   description: string;
 }
+
+export interface Statistics {
+  totalComments: number;
+  totalLikes: number;
+  totalPosts: number;
+}
+
+export interface PostStatistics {
+  name: string;
+  value: number;
+}
+[];

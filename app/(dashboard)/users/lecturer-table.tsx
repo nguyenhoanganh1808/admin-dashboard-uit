@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/card';
 import { Lecturer, Student } from '@/types/db';
 
-import api from '@/services/api';
+import api from '@/services/api-server';
 import { PaginationTable } from '@/components/ui/pagination-table';
 import { LecturerRow } from './lecturer-row';
 export async function LecturersTable({ currentPage }: { currentPage: number }) {

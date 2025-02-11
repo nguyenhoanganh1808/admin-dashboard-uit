@@ -4,11 +4,11 @@ import axios from 'axios';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-const api = axios.create({
+const apiServer = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL
 });
 
-api.interceptors.request.use(async (config) => {
+apiServer.interceptors.request.use(async (config) => {
   const cookieStore = await cookies();
   const token = cookieStore.get('accessToken')?.value;
   if (token) {
@@ -17,7 +17,7 @@ api.interceptors.request.use(async (config) => {
   return config;
 });
 
-api.interceptors.response.use(
+apiServer.interceptors.response.use(
   (response) => response,
   async (error) => {
     console.log(error);
@@ -30,4 +30,4 @@ api.interceptors.response.use(
   }
 );
 
-export default api;
+export default apiServer;
