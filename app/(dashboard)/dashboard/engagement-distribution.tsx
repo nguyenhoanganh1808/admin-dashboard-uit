@@ -59,8 +59,10 @@ export function EngagementDistribution({
   return (
     <Card className="flex flex-col border-none outline-none shadow-none">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Pie Chart - Label</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Engagement Breakdown</CardTitle>
+        <CardDescription>
+          Distribution of Posts, Comments, and Likes
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
