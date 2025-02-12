@@ -1,4 +1,9 @@
 export default {
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '10mb'
+    }
+  },
   images: {
     domains: ['firebasestorage.googleapis.com', 'storage.googleapis.com'],
     remotePatterns: [

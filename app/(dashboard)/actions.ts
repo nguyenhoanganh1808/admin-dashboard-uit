@@ -23,3 +23,22 @@ export async function rejectPost(formData: FormData) {
   await api.put(`/admin/rejectPost/${id}`, {});
   revalidatePath('/');
 }
+
+export async function createPost(formData: FormData) {
+  console.log(formData);
+  const textContent = formData.get('content');
+  const images = formData.get('images');
+  const files = formData.get('files');
+  const topics = formData.get('topics');
+  const postRequestString = JSON.stringify({
+    textContent,
+    title: '',
+    privacyId: 1,
+    topicIds: [1]
+  });
+  const newFormData = new FormData();
+  newFormData.append('postRequestString', postRequestString);
+  console.log('postReq: ', postRequestString);
+
+  await api.post('/posts/createPost', newFormData);
+}

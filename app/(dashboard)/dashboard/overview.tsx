@@ -38,7 +38,7 @@ const chartConfig = {
 
 export function Overview({ chartData }: OverviewProps) {
   return (
-    <ChartContainer config={chartConfig}>
+    <ChartContainer className="w-full p-3 h-96" config={chartConfig}>
       <BarChart
         accessibilityLayer
         data={chartData}
@@ -74,6 +74,13 @@ export function Overview({ chartData }: OverviewProps) {
             offset={8}
             className="fill-[--color-label]"
             fontSize={11}
+          />
+          <LabelList
+            dataKey="post"
+            position="right"
+            offset={8}
+            className="fill-foreground"
+            fontSize={12}
           />
         </Bar>
       </BarChart>
