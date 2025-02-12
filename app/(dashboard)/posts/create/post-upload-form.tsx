@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type ChangeEvent } from 'react';
+import { useActionState, useState, type ChangeEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
@@ -11,15 +11,20 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
-import { X } from 'lucide-react';
+import { AlertCircle, CheckCircle2, X } from 'lucide-react';
 import type React from 'react'; // Added import for React
 import { createPost } from '../../actions';
 import BackButton from '@/components/ui/back-button';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 export default function PostUploadForm() {
   const [topics, setTopics] = useState<number[]>([]);
   const [files, setFiles] = useState<File[]>([]);
   const [images, setImages] = useState<{ file: File; preview: string }[]>([]);
+  const [state, action, pending] = useActionState(createPost, {
+    type: '',
+    text: ''
+  });
 
   const handleTopicChange = (topicId: string) => {
     const id = parseInt(topicId, 10); // Convert to number
@@ -62,8 +67,8 @@ export default function PostUploadForm() {
 
   return (
     <form
-      action={createPost}
-      className="space-y-6  p-6 bg-white shadow-lg rounded-lg"
+      action={action}
+      className="space-y-6 p-6 pt-0 bg-white shadow-lg rounded-lg"
     >
       <div className="flex flex-row items-center">
         <BackButton />
@@ -175,8 +180,25 @@ export default function PostUploadForm() {
           </div>
         )}
       </div>
+      {state.text !== '' && (
+        <Alert variant={state.type === 'success' ? 'default' : 'destructive'}>
+          {state.type === 'success' ? (
+            <CheckCircle2 className="h-4 w-4" />
+          ) : (
+            <AlertCircle className="h-4 w-4" />
+          )}
+          <AlertTitle>
+            {state.type === 'success' ? 'Success' : 'Error'}
+          </AlertTitle>
+          <AlertDescription>{state.text}</AlertDescription>
+        </Alert>
+      )}
 
-      <Button type="submit" className="w-full">
+      <Button
+        disabled={pending}
+        type="submit"
+        className={`w-full ${pending ? 'opacity-50 cursor-not-allowed' : ''}`}
+      >
         Upload Post
       </Button>
     </form>
