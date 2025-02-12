@@ -14,6 +14,7 @@ import {
 import { X } from 'lucide-react';
 import type React from 'react'; // Added import for React
 import { createPost } from '../../actions';
+import BackButton from '@/components/ui/back-button';
 
 export default function PostUploadForm() {
   const [topics, setTopics] = useState<number[]>([]);
@@ -64,7 +65,10 @@ export default function PostUploadForm() {
       action={createPost}
       className="space-y-6  p-6 bg-white shadow-lg rounded-lg"
     >
-      <h4 className="font-semibold text-lg">Create a new post</h4>
+      <div className="flex flex-row items-center">
+        <BackButton />
+        <p className="font-semibold text-lg">Create a new post</p>
+      </div>
       <div>
         <Label htmlFor="content">Post Content</Label>
         <Textarea
@@ -106,7 +110,7 @@ export default function PostUploadForm() {
           </div>
         )}
         {topics.map((id, index) => (
-          <input key={index} type="hidden" name="topics" value={id} />
+          <input key={index} type="hidden" name="topics[]" value={id} />
         ))}
       </div>
 

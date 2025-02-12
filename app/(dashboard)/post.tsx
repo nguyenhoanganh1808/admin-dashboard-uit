@@ -14,11 +14,14 @@ import { TableCell, TableRow } from '@/components/ui/table';
 // import { deleteProduct } from './actions';
 import { Post as PostType } from '@/types/db';
 import { approvePost, rejectPost } from './actions';
+import Link from 'next/link';
 
 export function Post({ post }: { post: PostType }) {
   return (
     <TableRow>
-      <TableCell className="font-medium max-w-80">{post.textContent}</TableCell>
+      <TableCell className="font-medium max-w-80">
+        <Link href={`/posts/${post.id}`}>{post.textContent}</Link>
+      </TableCell>
       <TableCell>
         <Badge variant="outline" className="capitalize">
           {post.status}
