@@ -70,7 +70,7 @@ export default function PostUploadForm() {
       action={action}
       className="space-y-6 p-6 pt-0 bg-white shadow-lg rounded-lg"
     >
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row items-center gap-3">
         <BackButton />
         <p className="font-semibold text-lg">Create a new post</p>
       </div>

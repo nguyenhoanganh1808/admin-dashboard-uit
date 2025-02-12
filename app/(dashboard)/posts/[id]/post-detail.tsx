@@ -20,7 +20,7 @@ export default function PostDetail({
   return (
     <Card className="w-full mx-auto">
       <CardHeader className="flex flex-row">
-        <div className="w-fit">
+        <div className="w-fit space-x-3">
           <BackButton />
         </div>
         <CardTitle className="text-center text-lg">Post Detail</CardTitle>
