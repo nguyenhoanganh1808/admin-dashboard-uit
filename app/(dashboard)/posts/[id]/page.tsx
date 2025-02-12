@@ -29,10 +29,10 @@ interface MediaFile {
 export default async function PostDetailPage({
   params
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   // In a real application, you would fetch the post data here based on the id
-  const postId = Number(params.id);
+  const { id: postId } = await params;
   const { data } = await apiServer.get(`/posts/${postId}`);
   const post = data.body;
   console.log('POST: ', post);
